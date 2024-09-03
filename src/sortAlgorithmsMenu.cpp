@@ -81,7 +81,42 @@ void executeSortingAlgorithm(
 {
   SortAlgorithms<T> sortAlgorithms(vectorSize, itemSize, vectorTypeIdToNameList[vectorType], seed);
 
-  sortAlgorithms.runAlgorithm(vector, algorithmKey); 
+  switch(algorithmKey)
+  {
+    case 'a':
+      runBubbleSort(vector, 0, vectorSize-1);
+      break;
+    case 'i':
+      runInsertionSort(vector, 0, vectorSize-1);
+      break;
+    case 's':
+      runSelectionSort(vector, 0, vectorSize-1);
+      break;
+    case 'm':
+      runMergeSort(vector, 0, vectorSize-1);
+      break;
+    case 'q':
+      runQuickSort(vector, 0, vectorSize-1);
+      break;
+    case 'j':
+      runQuickSortMedian3(vector, 0, vectorSize-1);
+      break;
+    case 'o':
+      runQuickSortMedian3WithInsertionSort(vector, 0, vectorSize-1);
+      break;
+    case 'h':
+      runShellSort(vector, 0, vectorSize-1);
+      break;
+    case 'c':
+      runCountingSort(vector, 0, vectorSize-1);
+      break;
+    case 'u':
+      runBucketSort(vector, 0, vectorSize-1);
+      break;
+    case 'r':
+      runRadixSort(vector, 0, vectorSize-1, 8 * (ll)sizeof(T));
+      break;
+  }
 
   printVector(vector, vectorSize);
   waitMessage("Sorted."); 
