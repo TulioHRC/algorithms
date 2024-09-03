@@ -4,7 +4,8 @@
 #include <string.h>
 #include <random>
 #include <vector>
-#include "sortAlgorithmsMenu.hpp"
+#include "sort/sortAlgorithmsMenu.hpp"
+#include "sort/sortAlgorithms.hpp"
 
 commandStringToChar_t commandStringToCharSortAlgorithmsMenu[] = {
   {"Bubble Sort", 'a'},
@@ -50,9 +51,7 @@ void initVector(T * vector, int size, int vectorType, unsigned int seed){
   }
 
   if(vectorType != 0){
-    SortAlgorithms<T> * temporarySort = new SortAlgorithms<T>(size, sizeof(T), vectorTypeIdToNameList[0], 0);
-    temporarySort->runQuickSort(vector, 0, size - 1);
-    delete temporarySort;
+    quickSort(vector, 0, size - 1);
   } 
 
   if(vectorType == 2){
@@ -79,47 +78,45 @@ void executeSortingAlgorithm(
     unsigned int seed
   )
 {
-  SortAlgorithms<T> sortAlgorithms(vectorSize, itemSize, vectorTypeIdToNameList[vectorType], seed);
-
   switch(algorithmKey)
   {
     case 'a':
-      runBubbleSort(vector, 0, vectorSize-1);
+      bubbleSort(vector, 0, vectorSize-1);
       break;
     case 'i':
-      runInsertionSort(vector, 0, vectorSize-1);
+      insertionSort(vector, 0, vectorSize-1);
       break;
     case 's':
-      runSelectionSort(vector, 0, vectorSize-1);
+      selectionSort(vector, 0, vectorSize-1);
       break;
     case 'm':
-      runMergeSort(vector, 0, vectorSize-1);
+      mergeSort(vector, 0, vectorSize-1);
       break;
     case 'q':
-      runQuickSort(vector, 0, vectorSize-1);
+      quickSort(vector, 0, vectorSize-1);
       break;
     case 'j':
-      runQuickSortMedian3(vector, 0, vectorSize-1);
+      quickSortMedian3(vector, 0, vectorSize-1);
       break;
     case 'o':
-      runQuickSortMedian3WithInsertionSort(vector, 0, vectorSize-1);
+      quickSortMedian3WithInsertionSort(vector, 0, vectorSize-1);
       break;
     case 'h':
-      runShellSort(vector, 0, vectorSize-1);
+      shellSort(vector, 0, vectorSize-1);
       break;
     case 'c':
-      runCountingSort(vector, 0, vectorSize-1);
+      countingSort(vector, 0, vectorSize-1);
       break;
     case 'u':
-      runBucketSort(vector, 0, vectorSize-1);
+      bucketSort(vector, 0, vectorSize-1);
       break;
     case 'r':
-      runRadixSort(vector, 0, vectorSize-1, 8 * (ll)sizeof(T));
+      radixSort(vector, 0, vectorSize-1, 8 * (ll)sizeof(T));
       break;
   }
 
   printVector(vector, vectorSize);
-  waitMessage("Sorted."); 
+  waitMessage("Sorted.\n\nPress enter to continue..."); 
 }
 
 void runAlgorithm(char algorithmKey, unsigned int seed)

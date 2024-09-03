@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string.h>
 #include <vector>
-#include "sortAlgorithmsMenu.hpp"
+#include "sort/sortAlgorithmsMenu.hpp"
 
 commandStringToChar_t commandStringToChar[] = {
     {"Sorting Algorithms Menu", 'a'},

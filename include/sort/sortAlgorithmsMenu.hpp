@@ -4,7 +4,7 @@
 #include "commandsMap.hpp"
 #include "menu.hpp"
 #include "terminalFunctions.hpp"
-#include "sortAlgorithms.hpp"
+#include "sort/sortAlgorithms.hpp"
 
 extern commandStringToChar_t commandStringToCharSortAlgorithmsMenu[];
 
