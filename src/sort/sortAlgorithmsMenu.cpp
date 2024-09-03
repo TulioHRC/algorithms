@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <random>
-#include <vector>
+#include <chrono>
 #include "sort/sortAlgorithmsMenu.hpp"
 #include "sort/sortAlgorithms.hpp"
 
@@ -75,9 +75,12 @@ void executeSortingAlgorithm(
     int itemSize, 
     int vectorType, 
     char algorithmKey, 
+    bool hasTimeEvaluation,
     unsigned int seed
   )
 {
+  auto start = std::chrono::high_resolution_clock::now();
+
   switch(algorithmKey)
   {
     case 'a':
@@ -115,7 +118,14 @@ void executeSortingAlgorithm(
       break;
   }
 
+  auto end = std::chrono::high_resolution_clock::now();
+
+  auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+
   printVector(vector, vectorSize);
+
+  if(hasTimeEvaluation == true) std::cout << "\nRun time: " << duration.count()/1e6 << "ms" << std::endl;
+
   waitMessage("Sorted.\n\nPress enter to continue..."); 
 }
 
@@ -133,30 +143,39 @@ void runAlgorithm(char algorithmKey, unsigned int seed)
     std::cout << "Vector type [0] - random, [1] - sorted, [2] - reversed sorted: ";
     std::cin >> vectorType;
   } while (vectorType != 0 && vectorType != 1 && vectorType != 2);
+  
+  char wantTimeEvaluation;
+
+  do{
+    std::cout << "Do you want time evaluation? (S/N) ";
+    std::cin >> wantTimeEvaluation;
+  } while (wantTimeEvaluation != 'S' && wantTimeEvaluation != 's' && wantTimeEvaluation != 'N' && wantTimeEvaluation != 'n');
+
+  bool hasTimeEvaluation = (wantTimeEvaluation == 'S' || wantTimeEvaluation == 's') ? true : false; 
 
   if(itemSize == 8){
     char * vector = new char[vectorSize];
     initVector(vector, vectorSize, vectorType, seed); 
     printVector(vector, vectorSize);
-    executeSortingAlgorithm(vector, vectorSize, itemSize, vectorType, algorithmKey, seed);
+    executeSortingAlgorithm(vector, vectorSize, itemSize, vectorType, algorithmKey, hasTimeEvaluation, seed);
 
   } else if (itemSize == 16){
     short int * vector = new short int[vectorSize];
     initVector(vector, vectorSize, vectorType, seed); 
     printVector(vector, vectorSize);
-    executeSortingAlgorithm(vector, vectorSize, itemSize, vectorType, algorithmKey, seed);
+    executeSortingAlgorithm(vector, vectorSize, itemSize, vectorType, algorithmKey, hasTimeEvaluation, seed);
   
   } else if (itemSize == 32){
     int * vector = new int[vectorSize];
     initVector(vector, vectorSize, vectorType, seed); 
     printVector(vector, vectorSize);
-    executeSortingAlgorithm(vector, vectorSize, itemSize, vectorType, algorithmKey, seed);
+    executeSortingAlgorithm(vector, vectorSize, itemSize, vectorType, algorithmKey, hasTimeEvaluation, seed);
   
   } else { // 64 bits
     long long * vector = new long long[vectorSize];
     initVector(vector, vectorSize, vectorType, seed); 
     printVector(vector, vectorSize);
-    executeSortingAlgorithm(vector, vectorSize, itemSize, vectorType, algorithmKey, seed);
+    executeSortingAlgorithm(vector, vectorSize, itemSize, vectorType, algorithmKey, hasTimeEvaluation, seed);
   
   }
 

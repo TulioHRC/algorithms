@@ -19,6 +19,7 @@ void executeSortingAlgorithm(
     int itemSize, 
     int vectorType, 
     char algorithmKey, 
+    bool hasTimeEvaluation,
     unsigned int seed = 0
 );
 
