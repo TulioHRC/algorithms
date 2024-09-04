@@ -8,8 +8,8 @@ INCLUDE_DIR = ./include
 
 TARGET = $(BIN_DIR)/app.exe
 
-SRCS = main.cpp sort/functions.cpp
-OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
+SRCS = $(shell find $(SRC_DIR) -name "*.cpp")
+OBJS = $(SRCS:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
@@ -23,6 +23,9 @@ dirs:
 	@mkdir -p $(BIN_DIR)
 
 all: clean dirs $(TARGET)
+
+run: all 
+	${TARGET}
 
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
