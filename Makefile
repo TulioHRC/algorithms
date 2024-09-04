@@ -38,8 +38,8 @@ all: clean dirs $(TARGET)
 test: $(TEST_EXECUTABLE)
 	./$(TEST_EXECUTABLE)
 
-run: all 
-	${TARGET}
+run:  
+	./${TARGET}
 
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
