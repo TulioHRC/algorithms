@@ -309,7 +309,7 @@ void sortByBit(T* vector, ll &left, ll &right, ll bitPosition)
 
 // Classical binary radixSort implementation
 template <typename T>
-void radixSort(T* vector, ll start, ll end, ll bit) {
+void radixSort(T* vector, ll start, ll end, ll bit = 8 * (ll)sizeof(T)) {
   if (bit < 0 || start >= end) return;
   ll left = start;
   ll right = end;

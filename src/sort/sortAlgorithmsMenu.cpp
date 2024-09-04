@@ -1,4 +1,3 @@
-#include <time.h>
 #include <iostream>
 #include <unistd.h>
 #include <string.h>
@@ -114,7 +113,7 @@ void executeSortingAlgorithm(
       bucketSort(vector, 0, vectorSize-1);
       break;
     case 'r':
-      radixSort(vector, 0, vectorSize-1, 8 * (ll)sizeof(T));
+      radixSort(vector, 0, vectorSize-1);
       break;
   }
 

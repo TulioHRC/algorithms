@@ -17,7 +17,6 @@ class Menu
         void showMenu();
         std::string selectItemOnMenu();
         void virtual commandSwitch(std::string command);
-        //void virtual commandSwitchWithSortingAlgorithmsPerformances(std::string command, std::vector<sortPerformance_t>& sortingAlgorithmsPerformances);
         
 };
 
