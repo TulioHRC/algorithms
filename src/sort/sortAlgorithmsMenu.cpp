@@ -1,10 +1,4 @@
-#include <iostream>
-#include <unistd.h>
-#include <string.h>
-#include <random>
-#include <chrono>
 #include "sort/sortAlgorithmsMenu.hpp"
-#include "sort/sortAlgorithms.hpp"
 
 commandStringToChar_t commandStringToCharSortAlgorithmsMenu[] = {
   {"Bubble Sort", 'a'},
@@ -26,37 +20,6 @@ const char * vectorTypeIdToNameList[] = {
   "Sorted",
   "Reversed Sorted"
 };
-
-template <typename T>
-void reverseVector(T * vector, int size){
-  int j = size - 1;
-
-  for(int i = 0; i < j; i++){
-    T aux = vector[i];
-    vector[i] = vector[j];
-    vector[j] = aux;
-    j--;
-  }
-}
-
-template <typename T>
-void initVector(T * vector, int size, int vectorType, unsigned int seed){
-  std::random_device rd;
-  std::default_random_engine generator(seed ? seed : rd());
-  std::uniform_int_distribution<T> distribution(std::numeric_limits<T>::min(), std::numeric_limits<T>::max());
-
-  for (int i=0; i<size; i++){
-    vector[i] = (T)(distribution(generator));
-  }
-
-  if(vectorType != 0){
-    quickSort(vector, 0, size - 1);
-  } 
-
-  if(vectorType == 2){
-    reverseVector(vector, size);
-  }
-}
 
 template<typename T>
 void printVector(T * vector, int size){
