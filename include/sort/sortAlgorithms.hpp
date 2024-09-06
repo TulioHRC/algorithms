@@ -307,16 +307,22 @@ void sortByBit(T* vector, ll &left, ll &right, ll bitPosition)
   }
 }
 
-// Classical binary radixSort implementation
 template <typename T>
-void radixSort(T* vector, ll start, ll end, ll bit = 8 * (ll)sizeof(T)) {
+void radixSortBinary(T* vector, ll start, ll end, ll bit) {
   if (bit < 0 || start >= end) return;
   ll left = start;
   ll right = end;
 
   sortByBit(vector, left, right, bit);
-  radixSort(vector, start, right, bit - 1);
-  radixSort(vector, left, end, bit - 1);
+  radixSortBinary(vector, start, right, bit - 1);
+  radixSortBinary(vector, left, end, bit - 1);
+}
+
+// Classical binary radixSort implementation
+template <typename T>
+void radixSort(T* vector, ll start, ll end) {
+  ll bit = 8 * (ll)sizeof(T);
+  radixSortBinary(vector, start, end, bit);
 }
 
 #endif
