@@ -3,10 +3,11 @@
 #include <string.h>
 #include <vector>
 #include "sort/sortAlgorithmsMenu.hpp"
+#include "graph/graphAlgorithmsMenu.hpp"
 
 commandStringToChar_t commandStringToChar[] = {
     {"Sorting Algorithms Menu", 'a'},
-    {"Search Algorithms Menu", 'b'},
+    {"Graph Search Algorithms Menu", 'b'},
     {"Exit", 'e'}
 };
 
@@ -21,7 +22,7 @@ class MainMenu : public Menu {
           openSortingAlgorithmsMenu();
           break;
         case 'b':
-          //openSearchAlgorithmsMenu();
+          openGraphAlgorithmsMenu();
           break;
         case 'e':
           clearTerminal();
@@ -33,7 +34,7 @@ class MainMenu : public Menu {
 };
 
 int main(){
-  std::vector<std::string> operationsList = {"Sorting Algorithms Menu", "Search Algorithms Menu", "Exit"};
+  std::vector<std::string> operationsList = {"Sorting Algorithms Menu", "Graph Search Algorithms Menu", "Exit"};
   MainMenu mainMenu = MainMenu(operationsList, 3);
 
   while(true){
