@@ -91,7 +91,7 @@ void executeSortingAlgorithm(
   waitMessage("Sorted.\n\nPress enter to continue..."); 
 }
 
-void runAlgorithm(char algorithmKey, unsigned int seed)
+void runSortAlgorithm(char algorithmKey, unsigned int seed)
 {
   int vectorSize, itemSize, vectorType;
   std::cout << "Vector size: "; std::cin >> vectorSize;
@@ -160,7 +160,7 @@ void openSortingAlgorithmsMenu()
     "Go Back"
   };
 
-  AlgorithmMenu algorithmMenu = AlgorithmMenu(operationsList, (int)operationsList.size());
+  SortAlgorithmMenu algorithmMenu = SortAlgorithmMenu(operationsList, (int)operationsList.size());
   bool keepAlive = true;
 
   while(keepAlive){
