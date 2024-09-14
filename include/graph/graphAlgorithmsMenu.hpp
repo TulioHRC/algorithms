@@ -10,10 +10,17 @@
 #include "menu.hpp"
 #include "terminalFunctions.hpp"
 #include "graph/graphAlgorithms.hpp"
+#include "graph/adjList.hpp"
+#include "graph/adjMatrix.hpp"
 
 extern commandStringToChar_t commandStringToCharGraphAlgorithmsMenu[];
 
-void runGraphAlgorithm(char algorithmKey, unsigned int seed = 0);
+void runGraphAlgorithm(char algorithmKey);
+
+template
+void executeAdjMatrixGraphAlgorithm(char algorithmKey, std::string filename, int priorityQueueType, bool hasTimeEvaluation);
+void executeAdjListGraphAlgorithm(char algorithmKey, std::string filename, int priorityQueueType, bool hasTimeEvaluation);
+
 
 class GraphAlgorithmMenu : public Menu {
   public:
