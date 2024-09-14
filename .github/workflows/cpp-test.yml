@@ -16,8 +16,12 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y cmake g++
 
-      - name: Build
-        run: make all
+      - name: Build UI
+        run: |
+          cd UI
+          make all
 
       - name: Run sorting unit tests
-        run: make test
+        run: |
+          cd UI
+          make test
