@@ -3,7 +3,6 @@
 #include <string.h>
 #include <vector>
 #include "sort/sortAlgorithmsMenu.hpp"
-#include "graph/graphAlgorithmsMenu.hpp"
 
 commandStringToChar_t commandStringToChar[] = {
     {"Sorting Algorithms Menu", 'a'},
@@ -22,7 +21,7 @@ class MainMenu : public Menu {
           openSortingAlgorithmsMenu();
           break;
         case 'b':
-          openGraphAlgorithmsMenu();
+          //openGraphAlgorithmsMenu();
           break;
         case 'e':
           clearTerminal();

@@ -6,7 +6,7 @@ on:
       - main 
 
 jobs:
-  build:
+  Test:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,12 +16,8 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y cmake g++
 
-      - name: Build UI
-        run: |
-          cd UI
-          make all
+      - name: Build tests
+        run: make all
 
-      - name: Run sorting unit tests
-        run: |
-          cd UI
-          make test
+      - name: Run UI unit tests
+        run: make ui-test
