@@ -56,17 +56,17 @@ void executeSortingAlgorithm(
     unsigned int seed = 0
 );
 
-void runAlgorithm(char algorithmKey, unsigned int seed = 0);
+void runSortAlgorithm(char algorithmKey, unsigned int seed = 0);
 
-class AlgorithmMenu : public Menu {
+class SortAlgorithmMenu : public Menu {
   public:
-    AlgorithmMenu(std::vector<std::string> options, int size) : Menu(options, size) {};
+    SortAlgorithmMenu(std::vector<std::string> options, int size) : Menu(options, size) {};
 
     void commandSwitchWithSortingAlgorithmsPerformances(std::string command){
         char key = nameToKey(command, commandStringToCharSortAlgorithmsMenu);
         if(key != 'b' && key != 0){
             clearTerminal();
-            runAlgorithm(key);
+            runSortAlgorithm(key);
         }
         clearTerminal();
     }
