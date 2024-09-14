@@ -1,12 +1,7 @@
 #ifndef BUBBLE_SORT_H
 #define BUBBLE_SORT_H
 
-template <typename T>
-void swap(T *a, T *b){
-    T temp = *a;
-    *a = *b;
-    *b = temp;
-}
+#include "utils.hpp"
 
 template <typename T, typename C>
 void bubbleSort(T* vector, C start, C end) {
