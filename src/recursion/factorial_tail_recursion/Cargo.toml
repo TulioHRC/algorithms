@@ -1,0 +1,6 @@
+[package]
+name = "factorial_tail_recursion"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
