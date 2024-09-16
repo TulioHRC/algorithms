@@ -50,6 +50,7 @@ Benchmark test (before build release):
 - Times ran 500_000_000
 - Time taken: 32.070s
 
+There was some improvement at running time, but it was not relevant, the mainly part is to not use calls stack, avoiding stack overflow.
 
 ### References
 - [Coursera University of Washington class](https://www.coursera.org/lecture/programming-languages/tail-recursion-YZic1)
