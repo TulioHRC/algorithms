@@ -11,10 +11,16 @@ Its major problem is: **call stack**, recursion generally uses call stacks a lot
 This leads to a lot of memory inside of our call stack.
 Obs.: a function in the call stack, is only removed when it is returned.
 
-Benchmark test: 
+Benchmark test (after build release): 
 - Factorial of 20
-- Times ran 100_000_000
-- Time taken: 4.493s
+- Times ran 2_000_000_000
+- Time taken: 10.088s
+
+Benchmark test (before build release): 
+- Factorial of 20
+- Times ran 500_000_000
+- Time taken: 35.641s
+
 
 ### Tail Recursion
 
@@ -34,11 +40,16 @@ What really happens:
 
 ![Tail Recursion Result](tail_recursion3.png)
 
-But, because I'm using Rust (that do not has tail recursion optimization, I'm going to convert it to a loop, which other languages would do).
-Benchmark test: 
+Benchmark test (after build release): 
 - Factorial of 20
-- Times ran 100_000_000
-- Time taken: 3.022s
+- Times ran 2_000_000_000
+- Time taken: 9.483s
+
+Benchmark test (before build release): 
+- Factorial of 20
+- Times ran 500_000_000
+- Time taken: 32.070s
+
 
 ### References
 - [Coursera University of Washington class](https://www.coursera.org/lecture/programming-languages/tail-recursion-YZic1)
