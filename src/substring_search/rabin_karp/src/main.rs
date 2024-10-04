@@ -1,13 +1,28 @@
 use std::time::Instant;
 
-fn find_substring(text: &String, sub: &String) -> bool {
+const HORNER_Q: u64 = 997;
+const HORNER_R: u64 = 10;
+
+fn horner_hash(s: &String) -> u64{
+    let mut h: u64 = 0;
+    for c in s.chars() {
+        let c_val: u64 = c as u64;
+        h = (h * HORNER_R + c_val) % HORNER_Q;
+    }
+
+    return h;
+}
+
+fn find_substring_rabin_karp_algorithm(text: &String, sub: &String) -> bool {
     let text_size = text.len();
     let sub_string_size = sub.len();
+
+    let sub_hash_value = horner_hash(sub);
 
     if sub_string_size > text_size { return false; }
 
     for i in 0..=(text_size - sub_string_size) {
-        if text[i..i+sub_string_size] == sub[..] {
+        if horner_hash(&text[i..=(i + sub_string_size)].to_string()) == sub_hash_value {
             return true;
         }
     }
@@ -224,7 +239,7 @@ fn main() {
     let start = Instant::now();
     for time in 0..10 {
         for count in 0..sub_strings.len() {
-            println!("{time} - {count} for {} was {}", sub_strings[count], find_substring(&string, &sub_strings[count].to_string()));
+            println!("{time} - {count} for {} was {}", sub_strings[count], find_substring_rabin_karp_algorithm(&string, &sub_strings[count].to_string()));
         }
     }
 
