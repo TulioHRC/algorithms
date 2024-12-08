@@ -21,3 +21,6 @@ jobs:
 
       - name: Run UI unit tests
         run: make ui-test
+      
+      - name: Run sorting algorithms unit tests
+        run: make sort-test
